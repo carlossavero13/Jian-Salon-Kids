@@ -1,0 +1,60 @@
+.stylist { padding-bottom: 0; }
+.gallery + .stylist { padding-top: 0; }
+.stylist-grid { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 100px; }
+.stylist-visual { position: relative; width: calc(100% - 30px); max-width: 410px; margin: 0 auto; }
+.stylist-backdrop { position: absolute; inset: 18px -15px 1px 15px; background: #e3edcf; border: 1px solid #dce6ca; border-radius: 150px 150px 23px 23px; transform: rotate(5deg); }
+.stylist-portrait { position: relative; overflow: hidden; aspect-ratio: 3 / 4; border-radius: 150px 150px 18px 18px; background: #e8e8df; }
+.stylist-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.stylist-spark { position: absolute; top: 18px; right: -23px; color: var(--green); font-size: 78px; line-height: 1; transform: rotate(13deg); }
+.stylist-photo-label { position: absolute; left: -24px; bottom: 27px; display: flex; align-items: center; gap: 13px; padding: 17px 19px; border: 1px solid #e6e9df; border-radius: 12px; background: var(--paper); box-shadow: 0 6px 24px #24351c0c; transform: rotate(-4deg); }
+.stylist-photo-label > span { display: grid; place-items: center; flex-shrink: 0; width: 39px; height: 39px; color: #5b7a3f; border-radius: 50%; background: #e9f0de; }
+.stylist-photo-label svg { width: 20px; height: 20px; }
+.stylist-photo-label > div { font-family: var(--heading); font-size: 17px; font-weight: 500; letter-spacing: -.3px; }
+.stylist-photo-label small { display: block; margin-top: 5px; color: var(--muted); font-family: var(--body); font-size: 9px; font-weight: 400; letter-spacing: 0; }
+.stylist-copy .eyebrow { color: var(--green-dark); font-size: 9px; letter-spacing: 1.7px; }
+.stylist-copy h2 { font-size: clamp(44px, 4.6vw, 62px); line-height: 1.04; font-weight: 500; margin: 21px 0 0; }
+.stylist-copy h2 .serif-accent { color: var(--green-dark); }
+.stylist-copy > p { color: var(--muted); font-size: 13px; line-height: 1.95; max-width: 400px; margin: 24px 0 29px; }
+.stylist-value { display: flex; align-items: flex-start; gap: 14px; margin-top: 22px; }
+.stylist-value > span { width: 39px; height: 39px; display: grid; place-items: center; flex-shrink: 0; border: 1px solid #dde4d2; border-radius: 12px; background: #f0f4e8; color: #6a8152; }
+.stylist-value svg { width: 19px; height: 19px; }
+.stylist-value h3 { font-size: 14px; font-weight: 550; margin: 0 0 6px; }
+.stylist-value p { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 0; max-width: 320px; }
+.stylist-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 19px; margin-top: 31px; }
+.stylist-actions .button { font-size: 12px; min-height: 50px; padding: 14px 17px; gap: 13px; }
+.stylist-actions .button svg { width: 18px; height: 18px; }
+.stylist-actions .text-link { font-size: 11px; gap: 8px; }
+@media (max-width: 1100px) {
+  .stylist-grid { gap: 58px; }
+  .stylist-copy h2 { font-size: 48px; }
+  .stylist-copy > p { font-size: 12px; margin-block: 22px 25px; }
+  .stylist-value p { font-size: 11px; }
+  .stylist-photo-label { left: -15px; padding: 14px 16px; gap: 10px; }
+  .stylist-photo-label > div { font-size: 15px; }
+  .stylist-photo-label small { font-size: 8px; }
+  .stylist-photo-label > span { width: 35px; height: 35px; }
+  .stylist-spark { font-size: 65px; right: -20px; }
+}
+@media (max-width: 760px) {
+  .stylist-grid { grid-template-columns: minmax(0, 1fr); gap: 47px; }
+  .stylist-visual { width: calc(100% - 28px); max-width: 345px; }
+  .stylist-portrait, .stylist-backdrop { border-top-left-radius: 125px; border-top-right-radius: 125px; }
+  .stylist-photo-label { left: -9px; bottom: 24px; padding: 14px 15px; }
+  .stylist-photo-label > div { font-size: 15px; }
+  .stylist-photo-label small { font-size: 8px; }
+  .stylist-spark { right: -13px; top: 17px; font-size: 64px; }
+  .stylist-copy h2 { font-size: 47px; }
+  .stylist-copy > p { font-size: 13px; max-width: 100%; }
+  .stylist-value p { font-size: 12px; max-width: 100%; }
+  .stylist-actions { gap: 19px; margin-top: 28px; }
+  .stylist-actions .button { font-size: 11px; }
+  .stylist-actions .text-link { font-size: 11px; }
+}
+@media (max-width: 380px) {
+  .stylist-photo-label { padding-inline: 12px; gap: 8px; }
+  .stylist-photo-label > div { font-size: 14px; }
+  .stylist-photo-label small { font-size: 7px; }
+  .stylist-copy .eyebrow { font-size: 8px; letter-spacing: 1.2px; }
+  .stylist-copy h2 { font-size: 43px; }
+  .stylist-actions .button { font-size: 10px; padding-inline: 14px; gap: 9px; }
+}
