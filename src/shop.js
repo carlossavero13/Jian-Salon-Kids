@@ -1,9 +1,17 @@
 import { products } from './products-data.js';
 import { getWhatsAppUrl } from './whatsapp.js';
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 8;
 const categories = { cuidado: 'Cuidado del cabello', juguetes: 'Juguetes' };
 const currency = new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' });
+
+export function getCatalogType(product) {
+  if (product.category !== 'juguetes') return product.type || product.category;
+  if (/muñeca/i.test(product.name)) return 'munecas';
+  if (/auto|vehículo|camion|motocicleta|truck/i.test(product.name)) return 'vehiculos';
+  if (/figura|superhéroe|dinosaurio/i.test(product.name)) return 'figuras';
+  return 'juegos';
+}
 
 export function getProductMessage(product) {
   const label = product.presentation ? `${product.name} (${product.presentation})` : product.name;
@@ -33,15 +41,21 @@ function initCatalog(items, prefix) {
 
   let selected = 'todos';
   let limit = PAGE_SIZE;
+  const sort = document.getElementById(`${prefix}-sort`);
 
   function render() {
-    const filtered = items.filter((product) => selected === 'todos' || (product.type || product.category) === selected);
+    const filtered = items.filter((product) => selected === 'todos' || getCatalogType(product) === selected);
+    if (sort.value !== 'default') filtered.sort((a, b) => a.name.localeCompare(b.name, 'es') * (sort.value === 'za' ? -1 : 1));
     grid.replaceChildren();
     filtered.slice(0, limit).forEach((product) => {
       const card = document.createElement('article');
       card.className = 'product-card';
-      const visual = document.createElement('div');
+      const visual = document.createElement('a');
       visual.className = 'product-visual';
+      visual.href = getWhatsAppUrl(getProductMessage(product));
+      visual.target = '_blank';
+      visual.rel = 'noopener noreferrer';
+      visual.setAttribute('aria-label', `Consultar por WhatsApp: ${product.name}`);
       if (product.image) {
         const image = document.createElement('img');
         image.src = product.image;
@@ -116,6 +130,10 @@ function initCatalog(items, prefix) {
     limit += PAGE_SIZE;
     render();
     grid.children[firstNewIndex]?.querySelector('a')?.focus({ preventScroll: true });
+  });
+  sort.addEventListener('change', () => {
+    limit = PAGE_SIZE;
+    render();
   });
   render();
 }
