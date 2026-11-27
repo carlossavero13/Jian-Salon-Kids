@@ -83,7 +83,7 @@ Colores principales: `#79c624` y `#bbb4ac`.
 
 El perfil `#peluquero` aparece después de «La experiencia» y antes del recorrido en video. Utiliza la foto proporcionada, optimizada como `public/galeria/maestro.webp`, tiene acceso al video y un mensaje específico de WhatsApp para conversar sobre la visita.
 
-Contenido: `index.html`; diseño responsive: `src/stylist.css`. La presentación no atribuye un nombre, años de experiencia, certificaciones ni una biografía que todavía no se hayan proporcionado. Se pueden completar cuando el negocio los confirme.
+Contenido: `index.html`; diseño responsive: `src/stylist.css`. La biografía presenta a Edgar Alata, con experiencia laboral en Safari Kids y más de 15 años realizando cortes, según la información proporcionada por el negocio. Incluye mensajes de atención cercana y paciente.
 
 ## Opiniones de familias
 

@@ -1,14 +1,15 @@
 import { products } from './products-data.js';
 import { getWhatsAppUrl } from './whatsapp.js';
 
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 9;
 const categories = { cuidado: 'Cuidado del cabello', juguetes: 'Juguetes' };
 const currency = new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' });
 
 export function getProductMessage(product) {
+  const label = product.presentation ? `${product.name} (${product.presentation})` : product.name;
   return product.available === false
-    ? `¡Hola, Jian Salón Kids! Me interesa “${product.name}”. ¿Volverá a estar disponible?`
-    : `¡Hola, Jian Salón Kids! Quisiera consultar por “${product.name}”. ¿Me confirman el precio y la disponibilidad?`;
+    ? `¡Hola, Jian Salón Kids! Me interesa “${label}”. ¿Volverá a estar disponible?`
+    : `¡Hola, Jian Salón Kids! Quisiera consultar por “${label}”. ¿Me confirman el precio y la disponibilidad?`;
 }
 
 export function formatProductPrice(price) {
@@ -18,10 +19,15 @@ export function formatProductPrice(price) {
 }
 
 export function initShop(items = products) {
-  const catalog = document.getElementById('shop-catalog');
-  const grid = document.getElementById('shop-grid');
-  const more = document.getElementById('shop-more');
-  // Category cards remain useful even before the real inventory is supplied.
+  initCatalog(items.filter((product) => product.category !== 'juguetes'), 'shop');
+  initCatalog(items.filter((product) => product.category === 'juguetes'), 'toys');
+}
+
+function initCatalog(items, prefix) {
+  const catalog = document.getElementById(`${prefix}-catalog`);
+  const grid = document.getElementById(`${prefix}-grid`);
+  const more = document.getElementById(`${prefix}-more`);
+  // Keep the catalog hidden only when no real inventory has been supplied.
   catalog.hidden = items.length === 0;
   if (!items.length) return;
 
@@ -29,7 +35,7 @@ export function initShop(items = products) {
   let limit = PAGE_SIZE;
 
   function render() {
-    const filtered = items.filter((product) => selected === 'todos' || product.category === selected);
+    const filtered = items.filter((product) => selected === 'todos' || (product.type || product.category) === selected);
     grid.replaceChildren();
     filtered.slice(0, limit).forEach((product) => {
       const card = document.createElement('article');
@@ -51,13 +57,13 @@ export function initShop(items = products) {
       }
       const tag = document.createElement('span');
       tag.className = 'product-category';
-      tag.textContent = categories[product.category];
-      visual.append(tag);
+      tag.textContent = product.type === 'shampoo' ? 'Shampoo' : product.type === 'gel' ? 'Gel fijador' : categories[product.category];
+
       const content = document.createElement('div');
       content.className = 'product-content';
       const title = document.createElement('h3');
       title.textContent = product.name;
-      content.append(title);
+      content.append(tag, title);
       [
         product.description,
         product.presentation,
@@ -80,7 +86,7 @@ export function initShop(items = products) {
       }
       const contact = document.createElement('a');
       contact.className = 'product-contact';
-      contact.textContent = product.available === false ? 'Consultar reposición ↗' : 'Consultar por WhatsApp ↗';
+      contact.textContent = product.available === false ? 'Consultar reposición' : 'Consultar por WhatsApp';
       contact.href = getWhatsAppUrl(getProductMessage(product));
       contact.target = '_blank';
       contact.rel = 'noopener noreferrer';
@@ -89,15 +95,15 @@ export function initShop(items = products) {
       grid.append(card);
     });
     more.hidden = filtered.length <= limit;
-    document.getElementById('shop-empty').hidden = filtered.length > 0;
-    document.getElementById('shop-count').textContent = `${Math.min(limit, filtered.length)} de ${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
+    document.getElementById(`${prefix}-empty`).hidden = filtered.length > 0;
+    document.getElementById(`${prefix}-count`).textContent = `${Math.min(limit, filtered.length)} de ${filtered.length} ${filtered.length === 1 ? 'artículo' : 'artículos'}`;
   }
 
-  document.querySelectorAll('[data-shop-filter]').forEach((button) => {
+  catalog.querySelectorAll('[data-shop-filter]').forEach((button) => {
     button.addEventListener('click', () => {
       selected = button.dataset.shopFilter;
       limit = PAGE_SIZE;
-      document.querySelectorAll('[data-shop-filter]').forEach((filter) => {
+      catalog.querySelectorAll('[data-shop-filter]').forEach((filter) => {
         const active = filter === button;
         filter.classList.toggle('is-active', active);
         filter.setAttribute('aria-pressed', String(active));

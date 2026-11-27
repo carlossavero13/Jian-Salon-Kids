@@ -4,22 +4,6 @@
 // publicado con autorización de sus padres o tutores.
 export const looks = [
   {
-    src: '/galeria/corte2.webp',
-    title: 'Un look con personalidad',
-    alt: 'Un estilista de Jian perfila el cabello de un niño con capa verde',
-    category: 'cortes',
-    position: 'center 45%',
-    illustrative: false,
-  },
-  {
-    src: '/galeria/corte4.webp',
-    title: 'Un corte sobre ruedas',
-    alt: 'Un peque recibe su corte sentado en una silla infantil con forma de motocicleta',
-    category: 'cortes',
-    position: 'center 55%',
-    illustrative: false,
-  },
-  {
     src: '/galeria/servicio_listo3.webp',
     title: 'Sonrisas en familia',
     alt: 'Una familia posa junto al estilista y un peque en la silla de juegos del salón',
@@ -28,19 +12,19 @@ export const looks = [
     illustrative: false,
   },
   {
-    src: '/galeria/corte1.webp',
-    title: 'Cuidando cada detalle',
-    alt: 'Un estilista trabaja en el corte de un niño con capa azul frente al espejo',
-    category: 'cortes',
-    position: 'center 55%',
+    src: '/galeria/salon-sillas-infantiles.webp',
+    title: 'Un lugar para disfrutar su corte',
+    alt: 'Interior de Jian con sillas infantiles en forma de autos, zona de espera y piso de números de colores',
+    category: 'salon',
+    position: 'center 72%',
     illustrative: false,
   },
   {
-    src: '/galeria/local1.webp',
-    title: 'Bienvenidos a Jian',
-    alt: 'Vista del interior de Jian con espejos de marcos verdes, sillones y piso infantil de colores',
+    src: '/galeria/salon-estaciones-de-corte.webp',
+    title: 'Conoce nuestro salón',
+    alt: 'Estaciones de corte con espejos verdes, sillones blancos y vitrina de productos en Jian',
     category: 'salon',
-    position: 'center 55%',
+    position: 'center 65%',
     illustrative: false,
   },
   {
@@ -49,14 +33,6 @@ export const looks = [
     alt: 'El estilista posa con una familia y su peque después de la visita a Jian',
     category: 'momentos',
     position: 'center 50%',
-    illustrative: false,
-  },
-  {
-    src: '/galeria/corte3.webp',
-    title: 'A su ritmo, con cariño',
-    alt: 'Un peque acompañado por una persona adulta recibe un corte en una silla infantil verde',
-    category: 'cortes',
-    position: 'center 55%',
     illustrative: false,
   },
   {
@@ -106,7 +82,7 @@ export const looks = [
 export const videos = [
   {
     src: '/videos/video_principal.mp4',
-    poster: '/galeria/local1.webp',
+    poster: '/galeria/salon-sillas-infantiles.webp',
     title: 'Un recorrido por Jian',
     description: 'Nuestro peluquero te presenta el espacio donde recibimos a los peques y sus familias.',
     featured: true,

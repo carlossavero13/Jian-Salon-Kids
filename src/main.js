@@ -6,10 +6,14 @@ import './clips.css';
 import './shop.css';
 import './reviews.css';
 import './stylist.css';
+import './transformations.css';
+import './jian-sections.css';
 import './scroll-animations.css';
 import './header.css';
 import './whatsapp-widget.css';
+import { initTransformations } from './transformations.js';
 import { initGallery } from './gallery.js';
+import { initSocialLinks } from './social-links.js';
 import { initHeader } from './header.js';
 import { initClips } from './clips.js';
 import { initShop } from './shop.js';
@@ -22,6 +26,7 @@ import { createIcons, ArrowUpRight, ArrowDown, ArrowRight, ArrowUp, MessageCircl
 const icons = { ArrowUpRight, ArrowDown, ArrowRight, ArrowUp, MessageCircle, Menu, X, Heart, Scissors, Sprout, Sparkles, Smile, HandHeart, WandSparkles, Clock3, Plus, Info, Clapperboard, ChevronLeft, ChevronRight, MapPin, ShoppingBag, Droplets, Blocks };
 createIcons({ icons, attrs: { 'stroke-width': 1.7 } });
 initGallery();
+initTransformations();
 
 document.querySelectorAll('[data-whatsapp]').forEach((link) => {
   const message = link.dataset.whatsappMessage || (link.dataset.service
@@ -33,6 +38,7 @@ document.querySelectorAll('[data-whatsapp]').forEach((link) => {
 });
 
 initHeader();
+initSocialLinks();
 initClips();
 initShop();
 initReviews();

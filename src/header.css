@@ -1,4 +1,17 @@
 html { scroll-padding-top: 98px; }
+.header-socials { display: flex; align-items: center; gap: 6px; }
+.header-socials[hidden], .header-social[hidden] { display: none; }
+.header-social { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #36572766; border-radius: 50%; color: #263c1b; background: #ffffff30; flex-shrink: 0; }
+.header-social svg { width: 20px; height: 20px; }
+.header-social span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.header-social:hover { background: #ffffff70; }
+.header-social:focus-visible { outline: 3px solid #263c1b; outline-offset: 3px; }
+@media (max-width: 480px) {
+  .header-inner:has(.header-socials:not([hidden])) { gap: 6px; }
+  .header-inner:has(.header-socials:not([hidden])) .header-book { width: 40px; padding: 8px; }
+  .header-inner:has(.header-socials:not([hidden])) .header-book span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .header-socials { margin-left: auto; }
+}
 html.menu-open, html.menu-open body { overflow: hidden; }
 .header {
   position: sticky;

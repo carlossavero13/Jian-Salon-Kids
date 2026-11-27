@@ -1,0 +1,30 @@
+.jian-presentation { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 60px; }
+.jian-presentation-copy > p, .jian-extra-card > p, .jian-extra-card li, .jian-birthday p { font-size: 16px; line-height: 1.75; color: #56624e; }
+.jian-presentation-copy .button { margin-top: 20px; }
+.jian-presentation-player { background: #e5eddd; border-radius: 22px; padding: 12px; }
+.jian-presentation-player video { display: block; width: 100%; max-height: 580px; min-height: 250px; border-radius: 14px; background: #1e2919; object-fit: contain; }
+.jian-moments { background: #f1f5e9; }
+.jian-moments .section-heading > p { font-size: 16px; line-height: 1.7; }
+.jian-moments-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.jian-moments-grid figure { margin: 0; overflow: hidden; border-radius: 18px; background: white; }
+.jian-moments-grid img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.jian-moments-grid figcaption { padding: 20px; font-size: 18px; font-family: var(--heading); }
+.jian-extras { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.jian-extra-card { padding: 36px; border: 1px solid #e1e6d9; border-radius: 22px; background: #f5eee8; }
+.jian-extra-card h2 { font-size: clamp(30px, 3vw, 42px); }
+.jian-extra-card .button, .jian-extra-card .text-link { margin-top: 20px; font-size: 14px; }
+.jian-advice { background: #edf3e4; }
+.jian-advice ul { padding-left: 22px; }
+.jian-advice li + li { margin-top: 12px; }
+.jian-birthday { background: #dcedbd; }
+.jian-birthday-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; }
+.jian-birthday-offer { text-align: center; padding: 30px; border-radius: 24px; background: #ffffffa6; }
+.jian-birthday-offer > strong { display: block; font-family: var(--heading); font-size: clamp(64px, 8vw, 100px); line-height: 1.1; color: #365727; }
+.jian-birthday-offer > span { display: block; font-size: 18px; margin: 12px 0 24px; }
+.jian-birthday-offer > p { font-size: 14px; margin-bottom: 0; }
+.jian-extras a:focus-visible, .jian-presentation a:focus-visible, .jian-birthday a:focus-visible { outline: 3px solid #365727; outline-offset: 4px; }
+@media (max-width: 760px) {
+  .jian-presentation, .jian-extras, .jian-birthday-inner { grid-template-columns: 1fr; gap: 28px; }
+  .jian-moments-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+  .jian-extra-card { padding: 26px; }
+}
